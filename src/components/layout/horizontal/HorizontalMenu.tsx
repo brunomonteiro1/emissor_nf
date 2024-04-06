@@ -2,19 +2,21 @@
 'use client'
 
 // Next Imports
-import { useParams } from 'next/navigation'
+// import { useParams } from 'next/navigation'
 
 // MUI Imports
 import { useTheme } from '@mui/material/styles'
 
 // Type Imports
 import type { getDictionary } from '@/utils/getDictionary'
-import type { VerticalMenuContextProps } from '@menu/components/vertical-menu/Menu'
+
+// import type { VerticalMenuContextProps } from '@menu/components/vertical-menu/Menu'
 
 // Component Imports
-import HorizontalNav, { Menu, SubMenu, MenuItem } from '@menu/horizontal-menu'
+import HorizontalNav from '@menu/horizontal-menu'
 import VerticalNavContent from './VerticalNavContent'
-import CustomChip from '@core/components/mui/Chip'
+
+// import CustomChip from '@core/components/mui/Chip'
 
 // import { GenerateHorizontalMenu } from '@components/GenerateMenu'
 
@@ -23,51 +25,54 @@ import useVerticalNav from '@menu/hooks/useVerticalNav'
 import { useSettings } from '@core/hooks/useSettings'
 
 // Styled Component Imports
-import StyledHorizontalNavExpandIcon from '@menu/styles/horizontal/StyledHorizontalNavExpandIcon'
-import StyledVerticalNavExpandIcon from '@menu/styles/vertical/StyledVerticalNavExpandIcon'
+// import StyledHorizontalNavExpandIcon from '@menu/styles/horizontal/StyledHorizontalNavExpandIcon'
+// import StyledVerticalNavExpandIcon from '@menu/styles/vertical/StyledVerticalNavExpandIcon'
 
 // Style Imports
-import menuItemStyles from '@core/styles/horizontal/menuItemStyles'
-import menuRootStyles from '@core/styles/horizontal/menuRootStyles'
+// import menuItemStyles from '@core/styles/horizontal/menuItemStyles'
+// import menuRootStyles from '@core/styles/horizontal/menuRootStyles'
 import verticalNavigationCustomStyles from '@core/styles/vertical/navigationCustomStyles'
-import verticalMenuItemStyles from '@core/styles/vertical/menuItemStyles'
-import verticalMenuSectionStyles from '@core/styles/vertical/menuSectionStyles'
+
+// import verticalMenuItemStyles from '@core/styles/vertical/menuItemStyles'
+// import verticalMenuSectionStyles from '@core/styles/vertical/menuSectionStyles'
 
 // Menu Data Imports
 // import menuData from '@/data/navigation/horizontalMenuData'
 
-type RenderExpandIconProps = {
-  level?: number
-}
+// type RenderExpandIconProps = {
+//   level?: number
+// }
 
-type RenderVerticalExpandIconProps = {
-  open?: boolean
-  transitionDuration?: VerticalMenuContextProps['transitionDuration']
-}
+// type RenderVerticalExpandIconProps = {
+//   open?: boolean
+//   transitionDuration?: VerticalMenuContextProps['transitionDuration']
+// }
 
-const RenderExpandIcon = ({ level }: RenderExpandIconProps) => (
-  <StyledHorizontalNavExpandIcon level={level}>
-    <i className='tabler-chevron-right' />
-  </StyledHorizontalNavExpandIcon>
-)
+// const RenderExpandIcon = ({ level }: RenderExpandIconProps) => (
+//   <StyledHorizontalNavExpandIcon level={level}>
+//     <i className='tabler-chevron-right' />
+//   </StyledHorizontalNavExpandIcon>
+// )
 
-const RenderVerticalExpandIcon = ({ open, transitionDuration }: RenderVerticalExpandIconProps) => (
-  <StyledVerticalNavExpandIcon open={open} transitionDuration={transitionDuration}>
-    <i className='tabler-chevron-right' />
-  </StyledVerticalNavExpandIcon>
-)
+// const RenderVerticalExpandIcon = ({ open, transitionDuration }: RenderVerticalExpandIconProps) => (
+//   <StyledVerticalNavExpandIcon open={open} transitionDuration={transitionDuration}>
+//     <i className='tabler-chevron-right' />
+//   </StyledVerticalNavExpandIcon>
+// )
 
-const HorizontalMenu = ({ dictionary }: { dictionary: Awaited<ReturnType<typeof getDictionary>> }) => {
+const HorizontalMenu = ({}: { dictionary: Awaited<ReturnType<typeof getDictionary>> }) => {
   // Hooks
   const verticalNavOptions = useVerticalNav()
   const theme = useTheme()
   const { settings } = useSettings()
-  const params = useParams()
+
+  // const params = useParams()
 
   // Vars
   const { skin } = settings
-  const { transitionDuration } = verticalNavOptions
-  const { lang: locale, id } = params
+
+  // const { transitionDuration } = verticalNavOptions
+  // const { lang: locale, id } = params
 
   return (
     <HorizontalNav
