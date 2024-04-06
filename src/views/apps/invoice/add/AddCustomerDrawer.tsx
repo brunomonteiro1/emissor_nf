@@ -102,6 +102,13 @@ const AddCustomerDrawer = ({ open, setOpen, onFormSubmit }: Props) => {
           />
           <CustomTextField
             fullWidth
+            id='tipoPessoa'
+            label='Tipo'
+            value={data.tipoPessoa}
+            onChange={e => setData({ ...data, tipoPessoa: e.target.value })}
+          />
+          <CustomTextField
+            fullWidth
             id='numeroDocumento'
             label='Documento'
             value={data.numeroDocumento}
