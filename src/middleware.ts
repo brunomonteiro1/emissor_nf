@@ -13,7 +13,7 @@ import { i18n } from '@configs/i18n'
 
 // Util Imports
 import { getLocalizedUrl, isUrlMissingLocale } from '@/utils/i18n'
-import { ensurePrefix, withoutSuffix } from '@/utils/string'
+import { ensurePrefix } from '@/utils/string'
 
 // Constants
 const HOME_PAGE_URL = '/nf/list'
@@ -79,23 +79,23 @@ export default withAuth(
     const guestRoutes = ['login', 'register', 'forgot-password']
 
     // Shared routes (Routes that can be accessed by both guest and logged in users)
-    const sharedRoutes = ['shared-route']
+    // const sharedRoutes = ['shared-route']
 
     // Private routes (All routes except guest and shared routes that can only be accessed by logged in users)
-    const privateRoute = ![...guestRoutes, ...sharedRoutes].some(route => pathname.endsWith(route))
+    // const privateRoute = ![...guestRoutes, ...sharedRoutes].some(route => pathname.endsWith(route))
 
     // If the user is not logged in and is trying to access a private route, redirect to the login page
-    if (!isUserLoggedIn && privateRoute) {
-      let redirectUrl = '/login'
+    // if (!isUserLoggedIn && privateRoute) {
+    //   let redirectUrl = '/login'
 
-      if (!(pathname === '/' || pathname === `/${locale}`)) {
-        const searchParamsStr = new URLSearchParams({ redirectTo: withoutSuffix(pathname, '/') }).toString()
+    //   if (!(pathname === '/' || pathname === `/${locale}`)) {
+    //     const searchParamsStr = new URLSearchParams({ redirectTo: withoutSuffix(pathname, '/') }).toString()
 
-        redirectUrl += `?${searchParamsStr}`
-      }
+    //     redirectUrl += `?${searchParamsStr}`
+    //   }
 
-      return localizedRedirect(redirectUrl, locale, request)
-    }
+    //   return localizedRedirect(redirectUrl, locale, request)
+    // }
 
     // If the user is logged in and is trying to access a guest route, redirect to the root page
     const isRequestedRouteIsGuestRoute = guestRoutes.some(route => pathname.endsWith(route))
