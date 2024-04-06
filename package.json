@@ -14,6 +14,9 @@
     "migrate": "dotenv -e .env -- npx prisma migrate dev",
     "postinstall": "prisma generate && npm run build:icons"
   },
+  "browser": {
+    "fs": false
+  },
   "dependencies": {
     "@auth/prisma-adapter": "1.5.0",
     "@emotion/cache": "11.11.0",
@@ -42,6 +45,7 @@
     "classnames": "2.5.1",
     "date-fns": "^3.6.0",
     "draft-js": "0.11.7",
+    "fs": "^0.0.1-security",
     "kbar": "0.1.0-beta.45",
     "keen-slider": "6.8.6",
     "negotiator": "0.6.3",

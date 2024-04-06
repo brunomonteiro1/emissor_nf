@@ -258,47 +258,69 @@ const InvoiceListTable = ({ invoiceData }: { invoiceData: NfeType[] }) => {
             {/* {getAvatar({ avatar: row.original.avatar, name: row.original.name })} */}
             <div
               className='flex flex-col'
-              onClick={async () => {
-                try {
-                  const response = await axios.get(row.original.danfe, { responseType: 'blob' })
 
-                  if (!response.data) {
-                    throw new Error('Erro ao baixar o arquivo')
-                  }
+              // onClick={async () => {
+              //   // try {
+              //   //   const response = await axios.get(row.original.danfe, { responseType: 'blob' })
 
-                  // Determine o tipo de conteúdo do arquivo (mime type)
-                  const contentType = response.headers['content-type']
+              //   //   if (!response.data) {
+              //   //     throw new Error('Erro ao baixar o arquivo')
+              //   //   }
 
-                  // Crie um objeto URL para o blob do arquivo
-                  const blob = new Blob([response.data], { type: contentType })
-                  const blobUrl = URL.createObjectURL(blob)
+              //   //   // Determine o tipo de conteúdo do arquivo (mime type)
+              //   //   const contentType = response.headers['content-type']
 
-                  // Crie um link temporário para iniciar o download
-                  const link = document.createElement('a')
+              //   //   // Crie um objeto URL para o blob do arquivo
+              //   //   const blob = new Blob([response.data], { type: contentType })
+              //   //   const blobUrl = URL.createObjectURL(blob)
 
-                  link.href = blobUrl
-                  link.download = row.original.id
-                  document.body.appendChild(link)
-                  link.click()
+              //   //   // Crie um link temporário para iniciar o download
+              //   //   const link = document.createElement('a')
 
-                  // Limpeza de recursos
-                  URL.revokeObjectURL(blobUrl)
-                  document.body.removeChild(link)
-                } catch (error) {
-                  console.error(error)
-                  throw new Error('Erro ao baixar o arquivo')
-                }
-              }}
+              //   //   link.href = blobUrl
+              //   //   link.download = row.original.id
+              //   //   document.body.appendChild(link)
+              //   //   link.click()
+
+              //   //   // Limpeza de recursos
+              //   //   URL.revokeObjectURL(blobUrl)
+              //   //   document.body.removeChild(link)
+              //   // } catch (error) {
+              //   //   console.error(error)
+              //   //   throw new Error('Erro ao baixar o arquivo')
+              //   // }
+
+              //   try {
+              //     // Faz uma solicitação GET para obter o conteúdo do PDF
+              //     const response = await axios.get(row.original.danfe, {
+              //       responseType: 'stream'
+              //     })
+
+              //     // Cria um fluxo de escrita para salvar o conteúdo em um arquivo PDF
+              //     const writer = fs.createWriteStream(`./${row.original.danfe}`)
+
+              //     // Pipe o conteúdo da resposta para o arquivo de saída
+              //     response.data.pipe(writer)
+
+              //     // Retorna uma promessa resolvida quando a escrita estiver concluída
+              //     return new Promise((resolve, reject) => {
+              //       writer.on('finish', resolve)
+              //       writer.on('error', reject)
+              //     })
+              //   } catch (error) {
+              //     throw new Error('Erro ao baixar o PDF:')
+              //   }
+              // }}
             >
               {/* <Typography className='font-medium' color='text.primary'>
                 {row.original.name}
               </Typography> */}
 
-              {/* <Link target='_blank' href={row.original.danfe}> */}
-              <CustomAvatar skin='light' color={invoiceStatusObj['Downloaded'].color} size={28}>
-                <i className={classnames('bs-4 is-4', invoiceStatusObj['Downloaded'].icon)} />
-              </CustomAvatar>
-              {/* </Link> */}
+              <Link target='_blank' href={row.original.danfe}>
+                <CustomAvatar skin='light' color={invoiceStatusObj['Downloaded'].color} size={28}>
+                  <i className={classnames('bs-4 is-4', invoiceStatusObj['Downloaded'].icon)} />
+                </CustomAvatar>
+              </Link>
             </div>
           </div>
         )
